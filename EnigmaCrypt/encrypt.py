@@ -2,7 +2,7 @@ import random
 import string
 
 
-class Encoder():
+class Encrypter():
     # getting letters and digit
     def __init__(self):
         self.letters = string.ascii_letters
@@ -94,7 +94,7 @@ class Encoder():
         return key
 
     # encoding method
-    def encode(self, text):
+    def encrypt(self, text):
         chars_in_text = [ch for ch in text]
         # deciding whether to invert text or not
         if random.choice([True, False]):
@@ -108,22 +108,22 @@ class Encoder():
         changed_digits = self.randomize(self.digits)
 
         # encoding
-        encoded_text_list = []
+        encryptd_text_list = []
         for i, ch in enumerate(chars_in_text):
             if ch in self.letters:
                 index = self.letters.index(ch)
-                encoded_text_list.append(changed_alphabet[index])
+                encryptd_text_list.append(changed_alphabet[index])
             elif ch in self.digits:
                 index = self.digits.index(ch)
-                encoded_text_list.append(changed_digits[index])
+                encryptd_text_list.append(changed_digits[index])
             else:
-                encoded_text_list.append(ch)
+                encryptd_text_list.append(ch)
 
-        encoded_text = ''.join(encoded_text_list)
+        encryptd_text = ''.join(encryptd_text_list)
 
         # deciding whether to invert text or not
         if random.choice([True, False]):
-            encoded_text = encoded_text[::-1]
+            encryptd_text = encryptd_text[::-1]
             inverted2 = True
         else:
             inverted2 = False
@@ -131,4 +131,4 @@ class Encoder():
         # generating key
         key = self.generate_key(changed_digits, inverted,
                                 inverted2, changed_alphabet)
-        return [encoded_text, key]
+        return [encryptd_text, key]

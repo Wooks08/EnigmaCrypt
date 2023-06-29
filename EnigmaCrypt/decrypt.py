@@ -1,7 +1,7 @@
 import string
 
 
-class Decoder():
+class Decrypter():
     digits = string.digits
     letters = string.ascii_letters
 
@@ -76,7 +76,7 @@ class Decoder():
 
         return [digits_changed, alphabet_changed]
 
-    def decode(self, text, key):
+    def decrypt(self, text, key):
         changed_digits, changed_alphabet = self.formatting_key(key)
 
         list_text = list(text)
@@ -86,9 +86,9 @@ class Decoder():
         if self.inverted2:
             list_text = list_text[::-1]
 
-        list_text = [Decoder.digits[changed_digits.index(ch)] if ch in Decoder.digits else Decoder.letters[changed_alphabet.index(
-            ch)] if ch in Decoder.letters else ch for ch in list_text]
+        list_text = [Decrypter.digits[changed_digits.index(ch)] if ch in Decrypter.digits else Decrypter.letters[changed_alphabet.index(
+            ch)] if ch in Decrypter.letters else ch for ch in list_text]
 
-        decoded_text = ''.join(list_text)
+        decrypted_text = ''.join(list_text)
 
-        return decoded_text
+        return decrypted_text
