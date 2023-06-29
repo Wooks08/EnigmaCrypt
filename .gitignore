@@ -1,0 +1,5 @@
+/.pytest_cache
+/.vscode
+/dummy_data.txt
+/test.py
+/__pycache__
