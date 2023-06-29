@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: enigmacrypt
-Version: 0.0.1
+Version: 0.0.2
 Summary: Encoding and decoding strings using keys
 Home-page: https://github.com/Wooks08/EnigmaCrypt
 Author: WooksCode (Wojciech Karwowski)
@@ -16,6 +16,7 @@ Classifier: Operating System :: Microsoft :: Windows
 Requires-Python: >=3.07
 Description-Content-Type: text/markdown
 Provides-Extra: dev
+License-File: LICENSE
 
 # EnigmaCrypt
 EnigmaCrypt is a Python package that provides a simple and secure way to encrypt and decrypt strings. It uses a unique encryption algorithm and generates a key that can be used to decode the encrypted string.
@@ -29,16 +30,19 @@ To install EnigmaCrypt, you can use pip:
 Here's a simple example of how to use EnigmaCrypt to encrypt and decrypt a string:
 
 ```python
-from enigmacrypt import EnigmaCrypt
+from enigmacrypt import Encryption, Decryption
 
-# Create an instance of EnigmaCrypt
-crypt = EnigmaCrypt()
+# Create an instance of Encryption
+encryption = Encryption()
 
 # Encrypt a string
-encrypted_string, key = crypt.encrypt("Hello, World!")
+encrypted_string, key = encryption.encrypt("Hello, World!")
+
+# Create an instance of Decryption
+decryption = Decryption()
 
 # Decrypt the string using the generated key
-decrypted_string = crypt.decrypt(encrypted_string, key)
+decrypted_string = decryption.decrypt(encrypted_string, key)
 
 print(decrypted_string)  # Output: Hello, World!
 ```
