@@ -7,4 +7,5 @@
 /use.py
 /dist
 /build
-/enigmacrypt.egg-info
+/build/lib/app
+/enigmacrypt.egg-info/.
