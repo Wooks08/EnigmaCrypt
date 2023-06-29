@@ -10,16 +10,19 @@ To install EnigmaCrypt, you can use pip:
 Here's a simple example of how to use EnigmaCrypt to encrypt and decrypt a string:
 
 ```python
-from enigmacrypt import EnigmaCrypt
+from enigmacrypt import Encryption, Decryption
 
-# Create an instance of EnigmaCrypt
-crypt = EnigmaCrypt()
+# Create an instance of Encryption
+encryption = Encryption()
 
 # Encrypt a string
-encrypted_string, key = crypt.encrypt("Hello, World!")
+encrypted_string, key = encryption.encrypt("Hello, World!")
+
+# Create an instance of Decryption
+decryption = Decryption()
 
 # Decrypt the string using the generated key
-decrypted_string = crypt.decrypt(encrypted_string, key)
+decrypted_string = decryption.decrypt(encrypted_string, key)
 
 print(decrypted_string)  # Output: Hello, World!
 ```
