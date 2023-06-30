@@ -1,11 +1,8 @@
 /.pytest_cache
 /.vscode
-/dummy_data.txt
-/test.py
-/__pycache__
-/main.py
-/use.py
-/dist
-/build/*
-/enigmacrypt.egg-info
-/test.txt
+/app/enigmacrypt/src/dummy_data.txt
+/app/enigmacrypt/src/test.py
+/app/enigmacrypt/src/__pycache__
+/app/enigmacrypt/src/main.py
+/app/enigmacrypt/src/use.py
+/dist/
