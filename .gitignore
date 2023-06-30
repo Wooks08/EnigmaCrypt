@@ -8,3 +8,4 @@
 .bumpversion.cfg
 build.py
 upload.py
+.pypirc
