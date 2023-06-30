@@ -1,6 +1,16 @@
 import string
 
 
+class InvalidKeyError(Exception):
+    def __init__(self, value):
+        self.value = value
+
+
+def raiseInvalidKeyError():
+    raise InvalidKeyError(
+        "Provided key is invalid. Check it and try again.")
+
+
 class Decrypter():
     digits = string.digits
     letters = string.ascii_letters
@@ -76,7 +86,23 @@ class Decrypter():
 
         return [digits_changed, alphabet_changed]
 
+    def validate_key(self, key):
+        if (not key[0] in string.ascii_letters) or (not key[-1] in string.digits) or (not len(key) > 71) or (not len(key) < 96):
+            raiseInvalidKeyError()
+
+        return True
+
     def decrypt(self, text, key):
+        if not isinstance(text, str) or not isinstance(key, str):
+            raise ValueError(
+                f"Argument with text to decryption and argument with encryption key have to be a string. Types provided: \n- text argument: {type(text)} \n- key argument: {type(key)}.")
+
+        if text in ['', ' '] or key in ['', ' ']:
+            raise ValueError(
+                f"Arguments have to contain any character other than ` `. String: `{text}`, key: `{key}` provided.")
+
+        self.validate_key(key)
+
         changed_digits, changed_alphabet = self.formatting_key(key)
 
         list_text = list(text)
@@ -92,3 +118,9 @@ class Decrypter():
         decrypted_text = ''.join(list_text)
 
         return decrypted_text
+
+
+if __name__ == "__main__":
+    decrypter = Decrypter()
+    decrypter.decrypt(
+        "a", 77*'E' + '1')

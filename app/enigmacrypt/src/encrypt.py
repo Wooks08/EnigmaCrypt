@@ -23,7 +23,7 @@ class Encrypter():
         else:
             inverted_digits = False
 
-        # adding digit informing about digits inversion
+        # adding letter informing about digits inversion
         if inverted_digits:
             key_list.append(random.choice(string.ascii_lowercase))
         else:
@@ -37,7 +37,7 @@ class Encrypter():
         key_list.extend(random.choice(string.digits)
                         for _ in range(control_dig_num1))
 
-        # adding digit informing about text inversion
+        # adding letter informing about text inversion
         if inverted:
             key_list.append(random.choice(string.ascii_lowercase))
         else:
@@ -48,7 +48,7 @@ class Encrypter():
         key_list.extend(random.choice(string.digits)
                         for _ in range(control_dig_num2))
 
-        # adding digit informing about text inversion2
+        # adding letter informing about text inversion2
         if inverted2:
             key_list.append(random.choice(string.ascii_lowercase))
         else:
@@ -66,7 +66,7 @@ class Encrypter():
         else:
             inverted_alphabet = False
 
-        # adding digit informing about alphabet inversion
+        # adding letter informing about alphabet inversion
         if inverted_alphabet:
             key_list.append(random.choice(string.ascii_lowercase))
         else:
@@ -94,7 +94,15 @@ class Encrypter():
         return key
 
     # encoding method
-    def encrypt(self, text):
+    def encrypt(self, text: str):
+        if not isinstance(text, str):
+            raise ValueError(
+                f"Argument provided for encryption has to be a string. Argument of {type(text)} has been given instead")
+        # checking args
+        if text in ['', ' ']:
+            raise ValueError(
+                f"String provided for encryption has to contain any character other than ` `. `{text}` provided.    ")
+
         chars_in_text = [ch for ch in text]
         # deciding whether to invert text or not
         if random.choice([True, False]):
@@ -132,3 +140,8 @@ class Encrypter():
         key = self.generate_key(changed_digits, inverted,
                                 inverted2, changed_alphabet)
         return [encryptd_text, key]
+
+
+if __name__ == '__main__':
+    encrypter = Encrypter()
+    encrypter.encrypt(12)
