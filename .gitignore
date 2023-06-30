@@ -1,4 +1,5 @@
 /app/enigmacrypt/src/.pytest_cache
+/app/enigmacrypt/src/.vscode
 /.vscode/
 /build
 /enigmacrypt.egg-info
