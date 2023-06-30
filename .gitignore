@@ -10,3 +10,4 @@
 build.py
 upload.py
 .pypirc
+changelog.txt

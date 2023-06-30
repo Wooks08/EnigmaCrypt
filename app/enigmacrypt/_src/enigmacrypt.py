@@ -1,6 +1,6 @@
 from decrypt import Decrypter
 from encrypt import Encrypter
-from key import Validator
+from key import Validator, Formatter
 
 
 class Decryption():
@@ -19,3 +19,7 @@ class Key():
     def validate(self, key):
         validator = Validator()
         return validator.validate(key)
+
+    def key_info(self, key):
+        formatter = Formatter()
+        return formatter.format_key(key)
