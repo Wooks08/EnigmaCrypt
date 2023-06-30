@@ -1,5 +1,7 @@
 import random
 import string
+import json
+import os
 
 
 class Encrypter():
@@ -15,6 +17,9 @@ class Encrypter():
         return char_list
 
     def generate_key(self, changed_digits, inverted, inverted2, changed_alphabet):
+        min_len = 0
+        max_len = 0
+
         key_list = []
         # deciding whether to invert changed alphabet or not
         if random.choice([True, False]):
@@ -29,13 +34,21 @@ class Encrypter():
         else:
             key_list.append(random.choice(string.ascii_uppercase))
 
+        min_len += 1
+        max_len += 1
+
         # adding digits
         key_list.append(''.join(changed_digits))
+
+        min_len += 10
+        max_len += 10
 
         # control digits number 1
         control_dig_num1 = random.randint(0, 5)
         key_list.extend(random.choice(string.digits)
                         for _ in range(control_dig_num1))
+
+        max_len += 5
 
         # adding letter informing about text inversion
         if inverted:
@@ -43,10 +56,15 @@ class Encrypter():
         else:
             key_list.append(random.choice(string.ascii_uppercase))
 
+        min_len += 1
+        max_len += 1
+
         # control digits number 2
         control_dig_num2 = random.randint(0, 5)
         key_list.extend(random.choice(string.digits)
                         for _ in range(control_dig_num2))
+
+        max_len += 5
 
         # adding letter informing about text inversion2
         if inverted2:
@@ -54,10 +72,15 @@ class Encrypter():
         else:
             key_list.append(random.choice(string.ascii_uppercase))
 
+        min_len += 1
+        max_len += 1
+
         # control digits number 3
         control_dig_num3 = random.randint(0, 5)
         key_list.extend(random.choice(string.digits)
                         for _ in range(control_dig_num3))
+
+        max_len += 5
 
         # deciding whether to invert changed alphabet or not
         if random.choice([True, False]):
@@ -72,22 +95,46 @@ class Encrypter():
         else:
             key_list.append(random.choice(string.ascii_uppercase))
 
+        min_len += 1
+        max_len += 1
+
         # control digits number 4
         control_dig_num4 = random.randint(0, 5)
         key_list.extend(random.choice(string.digits)
                         for _ in range(control_dig_num4))
 
+        max_len += 5
+
         # adding alphabet
         key_list.append(''.join(changed_alphabet))
+
+        min_len += len(changed_alphabet)
+        max_len += len(changed_alphabet)
 
         # control digits number 5
         control_dig_num5 = random.randint(0, 5)
         key_list.extend(random.choice(string.digits)
                         for _ in range(control_dig_num5))
 
+        max_len += 5
+
         # adding digits which inform about number of digits in each control number
         key_list.extend(str(control_dig_num) for control_dig_num in [
                         control_dig_num1, control_dig_num2, control_dig_num3, control_dig_num4, control_dig_num5])
+
+        min_len += 5
+        max_len += 5
+
+        validate_data_values = {
+            "max_min_len": {
+                "min": min_len,
+                "max": max_len
+            },
+        }
+
+        with open("app/enigmacrypt/_src/validate_data.json", 'w') as f:
+            json.dump(validate_data_values, f, indent=4)
+            f.close()
 
         # returning key
         key = ''.join(key_list)

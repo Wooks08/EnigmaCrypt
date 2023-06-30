@@ -1,9 +1,18 @@
 import string
+import json
 
 
 class Validator():
+
     def validate(self, key):
-        if (not key[0] in string.ascii_letters) or (not key[-1] in string.digits) or (not len(key) > 71) or (not len(key) < 96):
+        with open("app/enigmacrypt/_src/validate_data.json", 'r') as f:
+            validate_data_values = json.load(f)
+            f.close()
+
+        min_len = validate_data_values['max_min_len']['min']
+        max_len = validate_data_values['max_min_len']['max']
+
+        if (not key[0] in string.ascii_letters) or (not key[-1] in string.digits) or (not len(key) > min_len) or (not len(key) < max_len):
             return False
 
         return True
@@ -84,7 +93,12 @@ class Formatter():
 if __name__ == '__main__':
     KEY = "t25169380473241B71181Mo662GuKhNazFAJMCpZqPyfRnctesQLvUDdSoWkrbxYVIHTigBXOmljEw3814145035"
 
-    formatter = Formatter()
-    digits, alphabet, inverted, inverted2 = formatter.format_key(KEY)
-    print(
-        f"Digits: {digits} \nAlphabet: {alphabet} \nInverted: {inverted} \nInverted2: {inverted2}")
+    # formatter = Formatter()
+    # digits, alphabet, inverted, inverted2 = formatter.format_key(KEY)
+    # print(
+    #     f"Digits: {digits} \nAlphabet: {alphabet} \nInverted: {inverted} \nInverted2: {inverted2}")
+
+    validator = Validator()
+    valid = validator.validate(KEY)
+
+    print(valid)
