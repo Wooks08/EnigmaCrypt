@@ -1,8 +1,0 @@
-/.pytest_cache
-/.vscode
-/app/enigmacrypt/src/dummy_data.txt
-/app/enigmacrypt/src/test.py
-/app/enigmacrypt/src/__pycache__
-/app/enigmacrypt/src/main.py
-/app/enigmacrypt/src/use.py
-/dist/

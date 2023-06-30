@@ -1,9 +1,0 @@
-4
-2
-3
-5
-5
-
-['n', '2043857196', '9', '2', '6', '9', 'N', '5', '8', 'M', '7', '3', '3', 'c', '8', '2', '5', '9', '1', 'fqwNkIRbUOhjnXSucxdYJPvmeLlABZWTHKMgpoEGzCFVDayrQits', '6', '8', '1', '9', '3', '4', '2', '3', '5', '5']
-Encoded text: sZ
-Key: n20438571969269N58M733c82591fqwNkIRbUOhjnXSucxdYJPvmeLlABZWTHKMgpoEGzCFVDayrQits6819342355
