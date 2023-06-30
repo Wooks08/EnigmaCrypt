@@ -1,3 +1,3 @@
-from .src.enigmacrypt import Decryption
-from .src.enigmacrypt import Encryption
-from .src.enigmacrypt import Key
+from ._src.enigmacrypt import Decryption
+from ._src.enigmacrypt import Encryption
+from ._src.enigmacrypt import Key

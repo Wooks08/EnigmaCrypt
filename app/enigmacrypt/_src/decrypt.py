@@ -1,4 +1,5 @@
 import string
+from key import Validator
 
 
 class InvalidKeyError(Exception):
@@ -86,12 +87,6 @@ class Decrypter():
 
         return [digits_changed, alphabet_changed]
 
-    def validate_key(self, key):
-        if (not key[0] in string.ascii_letters) or (not key[-1] in string.digits) or (not len(key) > 71) or (not len(key) < 96):
-            raiseInvalidKeyError()
-
-        return True
-
     def decrypt(self, text, key):
         if not isinstance(text, str) or not isinstance(key, str):
             raise ValueError(
@@ -101,7 +96,8 @@ class Decrypter():
             raise ValueError(
                 f"Arguments have to contain any character other than ` `. String: `{text}`, key: `{key}` provided.")
 
-        self.validate_key(key)
+        if not Validator.validate(key):
+            raiseInvalidKeyError()
 
         changed_digits, changed_alphabet = self.formatting_key(key)
 
