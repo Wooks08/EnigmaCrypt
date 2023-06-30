@@ -1,0 +1,6 @@
+/app/enigmacrypt/src/.pytest_cache
+/.vscode/
+/build
+/enigmacrypt.egg-info
+/dist
+.bumpversion.cfg
