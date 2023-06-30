@@ -122,5 +122,6 @@ class Decrypter():
 
 if __name__ == "__main__":
     decrypter = Decrypter()
-    decrypter.decrypt(
-        "a", 77*'E' + '1')
+    text = decrypter.decrypt(
+        "a", "t25169380473241B71181Mo662GuKhNazFAJMCpZqPyfRnctesQLvUDdSoWkrbxYVIHTigBXOmljEw3814145035")
+    print(text)

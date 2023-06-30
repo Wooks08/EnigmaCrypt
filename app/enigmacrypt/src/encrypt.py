@@ -144,4 +144,5 @@ class Encrypter():
 
 if __name__ == '__main__':
     encrypter = Encrypter()
-    encrypter.encrypt(12)
+    _, key = encrypter.encrypt("lol")
+    print(key)
