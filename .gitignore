@@ -5,3 +5,4 @@
 /enigmacrypt.egg-info
 /dist
 .bumpversion.cfg
+build.py
