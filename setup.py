@@ -25,7 +25,7 @@ setup(
     keywords=['python', 'encode', 'decode', 'decoder',
               'encoder', 'string encryption', 'string decryption'],
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "Operating System :: Unix",
