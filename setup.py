@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 with open("README.md", 'r') as f:
     LONG_DESCRIPTION = f.read()
 
-VERSION = '0.0.5'
+VERSION = '0.0.4'
 DESCRIPTION = 'Encoding and decoding strings using keys'
 
 # Setting up
