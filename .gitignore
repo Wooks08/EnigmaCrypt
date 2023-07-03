@@ -11,3 +11,4 @@ build.py
 upload.py
 .pypirc
 changelog.txt
+test.py
