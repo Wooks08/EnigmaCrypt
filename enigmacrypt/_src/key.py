@@ -2,10 +2,10 @@ import string
 import json
 
 
-class Validator():
+class Validator:
 
     def validate(self, key):
-        with open("app/enigmacrypt/_src/validate_data.json", 'r') as f:
+        with open("enigmacrypt/_src/validate_data.json", 'r') as f:
             validate_data_values = json.load(f)
             f.close()
 
@@ -18,7 +18,7 @@ class Validator():
         return True
 
 
-class Formatter():
+class Formatter:
     def __init__(self):
         self.inverted = None
         self.inverted2 = None

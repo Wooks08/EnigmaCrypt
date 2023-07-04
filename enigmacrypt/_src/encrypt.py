@@ -4,7 +4,7 @@ import json
 import os
 
 
-class Encrypter():
+class Encrypter:
     # getting letters and digit
     def __init__(self):
         self.letters = string.ascii_letters
@@ -132,7 +132,7 @@ class Encrypter():
             },
         }
 
-        with open("app/enigmacrypt/_src/validate_data.json", 'w') as f:
+        with open("enigmacrypt/_src/validate_data.json", 'w') as f:
             json.dump(validate_data_values, f, indent=4)
             f.close()
 
@@ -142,13 +142,19 @@ class Encrypter():
 
     # encoding method
     def encrypt(self, text: str):
-        if not isinstance(text, str):
+        if not isinstance(text, str) and not isinstance(text, list):
             raise ValueError(
                 f"Argument provided for encryption has to be a string. Argument of {type(text)} has been given instead")
         # checking args
         if text in ['', ' ']:
             raise ValueError(
-                f"String provided for encryption has to contain any character other than ` `. `{text}` provided.    ")
+                f"String provided for encryption has to contain any character other than ` `. `{text}` provided.")
+
+        if isinstance(text, list):
+            text_is_list = True
+            text = ''.join(text)
+        else:
+            text_is_list = False
 
         chars_in_text = [ch for ch in text]
         # deciding whether to invert text or not
@@ -163,22 +169,26 @@ class Encrypter():
         changed_digits = self.randomize(self.digits)
 
         # encoding
-        encryptd_text_list = []
+        encrypted_text_list = []
         for i, ch in enumerate(chars_in_text):
             if ch in self.letters:
-                index = self.letters.index(ch)
-                encryptd_text_list.append(changed_alphabet[index])
+                index_in_text = text.index(ch)
+                if text[index_in_text - 1] == "\\":
+                    continue
+                else:
+                    index = self.letters.index(ch)
+                    encrypted_text_list.append(changed_alphabet[index])
             elif ch in self.digits:
                 index = self.digits.index(ch)
-                encryptd_text_list.append(changed_digits[index])
+                encrypted_text_list.append(changed_digits[index])
             else:
-                encryptd_text_list.append(ch)
+                encrypted_text_list.append(ch)
 
-        encryptd_text = ''.join(encryptd_text_list)
+        encrypted_text = ''.join(encrypted_text_list)
 
         # deciding whether to invert text or not
         if random.choice([True, False]):
-            encryptd_text = encryptd_text[::-1]
+            encrypted_text = encrypted_text[::-1]
             inverted2 = True
         else:
             inverted2 = False
@@ -186,7 +196,14 @@ class Encrypter():
         # generating key
         key = self.generate_key(changed_digits, inverted,
                                 inverted2, changed_alphabet)
-        return [encryptd_text, key]
+        if text_is_list:
+            encrypted_text = encrypted_text.split('\n')
+            encrypted_text_file_list = [
+                item + "\n" for item in encrypted_text if encrypted_text.index(item) < len(encrypted_text) - 1]
+            encrypted_text_file_list.append(encrypted_text[-1])
+            return [encrypted_text_file_list, key]
+        else:
+            return [encrypted_text, key]
 
 
 if __name__ == '__main__':
