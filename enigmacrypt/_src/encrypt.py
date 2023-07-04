@@ -172,7 +172,7 @@ class Encrypter:
         encrypted_text_list = []
         for i, ch in enumerate(chars_in_text):
             if ch in self.letters:
-                index_in_text = text.index(ch)
+                index_in_text = chars_in_text.index(ch)
                 if text[index_in_text - 1] == "\\":
                     continue
                 else:
