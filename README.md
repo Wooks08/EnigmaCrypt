@@ -34,7 +34,7 @@ Contributions are welcome! If you have any bug reports, feature requests, or sug
 EnigmaCrypt is licensed under the MIT License.
 
 ## Contact
-If you have any questions or need support, you can reach out to the project maintainer at wookscode.kontakt@gmail.com.
+If you have any questions or need support, you can reach out to the project maintainer at wookscode.contact@gmail.com.
 
 ## Acknowledgments
 EnigmaCrypt works by shuffling the alphabet and digits in random order and then generating quite complex key to show crucial information for decryption process
